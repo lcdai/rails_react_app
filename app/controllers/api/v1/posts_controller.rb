@@ -1,19 +1,19 @@
-class PostsController < ApplicationController
+class Api::V1::PostsController < ApplicationController
   before_action :set_post, only: %i[ show update destroy ]
 
-  # GET /posts
+  # GET /api/v1/posts
   def index
     @posts = Post.order(created_at: :desc)
 
     render json: @posts
   end
 
-  # GET /posts/1
+  # GET /api/v1/posts/1
   def show
     render json: @post
   end
 
-  # POST /posts
+  # POST /api/v1/posts
   def create
     @post = Post.new(post_params)
 
@@ -24,7 +24,7 @@ class PostsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /posts/1
+  # PATCH/PUT /api/v1/posts/1
   def update
     if @post.update(post_params)
       render json: @post
@@ -33,7 +33,7 @@ class PostsController < ApplicationController
     end
   end
 
-  # DELETE /posts/1
+  # DELETE /api/v1/posts/1
   def destroy
     @post.destroy!
   end
